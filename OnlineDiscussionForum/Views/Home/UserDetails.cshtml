@@ -1,0 +1,36 @@
+﻿@model OnlineDiscussionForum.Entities.ApplicationUser
+@{
+    ViewData["Title"] = "User Details";
+}
+<div class="card" style="width:100%; margin-top:10px;">
+    <div class="card-header bg-dark text-white">
+        <h5>Your Details, Soon We approved as you register for</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Name)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Name)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.UserTypes)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.UserTypes)</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Email)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Email)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.PhoneNumber)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.PhoneNumber)</td>
+            </tr>
+        </table>
+        <p>
+            @Html.ActionLink("Home", "Index", "Home", new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</div>

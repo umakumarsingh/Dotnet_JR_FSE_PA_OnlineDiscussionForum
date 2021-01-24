@@ -1,0 +1,57 @@
+﻿@model OnlineDiscussionForum.BusinessLayer.ViewModels.ForumThreadViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-right" style="margin-top:10px;">
+        @Html.ActionLink("Post Thread", "NewPostThread", "Home", new { @class = "btn btn-danger" }) ||
+        @Html.ActionLink("Register", "RegisterNewUser", "Home", new { @class = "btn btn-danger" })
+    </div>
+<div class="text-center" style="margin-top:10px;">
+    <h4>Online Discussion Forum</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.ThreadName)</th>
+            <th>@Html.DisplayNameFor(m => m.Description)</th>
+            <th>@Html.DisplayNameFor(m => m.UserTypes)</th>
+            <th>@Html.DisplayNameFor(m => m.Email)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.PageCount() == 0)
+        {
+            <tr>
+                <td style="color:red;" colspan="12">
+                    Records not found |
+                    @Html.ActionLink("Go To Home", "Index", "Home", new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var post in Model.PaginatedThread())
+            {
+                <tr>
+                    <td>@post.ThreadName</td>
+                    <td>@post.Description</td>
+                    <td>@post.UserTypes</td>
+                    <td>@post.Email</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Home", new { ThreadId = post.ThreadId, @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<ul class="pagination">
+    @for (int i = 1; i <= Model.PageCount(); i++)
+    {
+        <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,36 @@
+﻿@model OnlineDiscussionForum.Entities.ForumThread
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="card" style="width:100%; margin-top:10px;">
+    <div class="card-header bg-dark text-white">
+        <h5>Thread Details</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.ThreadName)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.ThreadName)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.UserTypes)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.UserTypes)</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Description)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Description)</td>
+                <td>
+                    <b>@Html.DisplayNameFor(m => m.Email)</b>
+                </td>
+                <td>@Html.DisplayFor(m => m.Email)</td>
+            </tr>
+        </table>
+        <p>
+            @Html.ActionLink("Back to List", "Index", "Home", new { @class = "btn btn-primary" }) ||
+        </p>
+    </div>
+</div>
